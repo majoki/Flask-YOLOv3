@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<title>File Browser</title>
+<h1>图片预览</h1>
+<hr>
+    <style type="text/css">
+    body{ margin:0px;padding:0px;text-align:center;}
+    .main{ width:75%;margin:0px auto;}
+    </style>
+        <p>URL: {{ file_url }}</p>
+        <div class="msg_desc">
+        <img src="{{ file_url }}"  width="30%" height="30%">
+        </div>
+        <hr>
+        <button><a href="{{ url_for('detection', filename=file_url.split('/')[-1]) }}">Detect</a></button>
+{% endblock %}

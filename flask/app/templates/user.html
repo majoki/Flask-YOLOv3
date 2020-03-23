@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<div class="container">
+    <table>
+        <tr valign="top">
+        <td>
+            <a {% if user == current_user %} href="{{ url_for('change_avatar') }}"{% endif %}>
+                {% if file_url %}
+                <img class="img-rounded profile-thumbnail" src="{{ file_url }}" height="256" width="256" >
+                {% else %}
+                <img class="img-rounded profile-thumbnail" src="{{ user.avatar }}" height="256" width="256">
+                {% endif %}
+            </a>    
+        </td>
+        <td>
+            <h1>用户昵称: {{ user.username }}</h1>
+            <hr>
+            {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+            <hr>
+            {% if user.last_seen %}<p>Last seen on:{{ user.last_seen }}</p>{% endif %}
+            {% if user == current_user %}<p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>{% endif %}
+        </td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

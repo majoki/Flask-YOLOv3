@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Video{% endblock %}
+
+{% block app_content %}
+
+<html>
+  <head>
+    <title>Detected Result</title>
+  </head>
+  <body>
+    <h1>视频检测结果</h1>
+    <p>path: {{ filepath }}</p>
+    <style type="text/css">
+      body{ margin:0px;padding:0px;text-align:center;}
+      .main{ width:75%;margin:0px auto;}
+    </style>
+    <img src="{{ url_for('video_feed', filepath='detected_images'+'\\'+filepath.split('\\')[-1]) }}", width="30%" height="30%">
+  </body>
+</html>
+
+{% endblock %}

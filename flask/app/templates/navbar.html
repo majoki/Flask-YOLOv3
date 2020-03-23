@@ -1,0 +1,45 @@
+<nav class="navbar navbar-default">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Flask App</a>
+      </div>
+  
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li class="{% if request.endpoint == 'home' %}active{% endif %}">
+                <a href = "{{ url_for('home') }}">Home</a>
+            </li>
+            {% if current_user.is_authenticated %}
+            <li class="{% if request.endpoint == 'user' %}active{% endif %}">
+              <a href = "{{ url_for('user', username=current_user.username) }}">Profile</a>
+            </li>
+            {% endif %}
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            {% if not current_user.is_authenticated %}
+            <li class="{% if request.endpoint == 'login' %}active{% endif %}">
+              <a href = "{{ url_for('login') }}">Login</a>
+            </li>
+            {% else %}
+            <li class="{% if request.endpoint == 'upload_file' %}active{% endif %}">
+              <a href = "{{ url_for('upload_file') }}">Upload</a>
+            </li>
+            <li class="{% if request.endpoint == 'manage_file' %}active{% endif %}">
+              <a href = "{{ url_for('manage_file') }}">Manage</a>
+            </li>
+            <li class="{% if request.endpoint == 'logout' %}active{% endif %}">
+              <a href = "{{ url_for('logout') }}">Logout</a>
+            </li>
+            {% endif %}
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>

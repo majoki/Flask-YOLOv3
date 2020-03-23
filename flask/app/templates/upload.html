@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Upload File{% endblock %}
+
+{% block app_content %}
+    <!DOCTYPE html>
+    <title>Upload File</title>
+    <h1>图片或视频上传</h1>
+    <hr>
+    <form method=post enctype=multipart/form-data>
+        <input type=file name=file> 
+        <hr>
+        <input type=submit value=Upload>
+    </form>
+{% endblock %}
+

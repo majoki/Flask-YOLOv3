@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<title>Detect Result</title>
+<h1>图片检测结果</h1>
+<hr>
+    <style type="text/css">
+    body{ margin:0px;padding:0px;text-align:center;}
+    .main{ width:75%;margin:0px auto;}
+    </style>
+        <div class="msg_desc">
+        <p>path: {{ filepath }}</p>
+        <img src="data:;base64,{{ img }}"  width="30%" height="30%">
+        </div>
+        <hr>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "bootstrap/base.html" %}
+ 
+{% block title %}
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Flask App</title>
+    {% endif %}
+{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}    
+    <div class="container">
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data=dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% block app_content %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+
